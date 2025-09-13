@@ -108,7 +108,9 @@ This script monitors network connections and alerts when it detects a port scan:
 # Monitors network for suspicious scanning activity
 # Alerts when multiple connections detected from same IP
 
+```
 
+---
 
 ## 2. Report Generator (`generate_report.py`)
 This script creates professional HTML reports:
@@ -210,6 +212,7 @@ Feel free to reach out if you have questions about this project or want to discu
 
 ## ⚠️ Disclaimer
 This project is for educational purposes only. Never perform security testing on systems you don't own or without explicit permission.
+
 
 
 
