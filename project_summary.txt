@@ -1,0 +1,26 @@
+Cybersecurity Lab Project Summary
+==================================
+Author: |Sarvarbek|
+
+
+Components Implemented:
+1. Attack VM: Kali Linux (10.0.2.3)
+2. Target VM: Ubuntu (10.0.2.15)
+3. Detection: Python script monitoring connections
+4. Analysis: Wireshark packet capture
+5. Reporting: Automated HTML report generation
+
+Attacks Demonstrated:
+- TCP SYN Scan
+- Service Version Detection
+
+Defenses Implemented:
+- UFW Firewall
+- Real-time scan detection
+- Automated alerting
+
+Skills Demonstrated:
+- Python scripting
+- Network security
+- Packet analysis
+- Security reporting
