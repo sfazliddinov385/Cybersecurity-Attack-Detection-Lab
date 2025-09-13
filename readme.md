@@ -99,26 +99,56 @@ I created a Python script that automatically generates professional HTML reports
 ![Final Report](screenshots/Capture18.PNG)
 *Professional HTML security report showing the attack summary and recommendations*
 
-## 💻 Code Files
-
-### 1. Detection Script (`detect_scan.py`)
-This script monitors network connections and alerts when it detects a port scan:
-```python
-#!/usr/bin/env python3
-# Monitors network for suspicious scanning activity
-# Alerts when multiple connections detected from same IP
-
-```
-
----
+# 💻 Code Files
 
 ## 2. Report Generator (`generate_report.py`)
 This script creates professional HTML reports:
 
 ```python
 #!/usr/bin/env python3
-# Generates HTML security assessment reports
-# Includes findings, severity levels, and recommendations
+import datetime
+
+def create_report():
+    timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    html = f"""<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Report</title>
+    <style>
+        body {{ font-family: Arial; margin: 40px; }}
+        .finding {{ background: #f5f5f5; padding: 15px; margin: 10px 0; }}
+        .critical {{ border-left: 5px solid #d32f2f; }}
+        .high {{ border-left: 5px solid #ff9800; }}
+    </style>
+</head>
+<body>
+    <h1>Security Assessment Report</h1>
+    <p>Target: Ubuntu 10.0.2.15</p>
+    <p>Generated: {timestamp}</p>
+    
+    <div class="finding critical">
+        <h3>Port Scanning Detected</h3>
+        <p>Multiple connection attempts from 10.0.2.3</p>
+        <p>Severity: High</p>
+    </div>
+    
+    <h2>Recommendations</h2>
+    <ol>
+        <li>Block suspicious IPs</li>
+        <li>Enable rate limiting</li>
+        <li>Implement fail2ban</li>
+        <li>Review firewall rules</li>
+    </ol>
+</body>
+</html>"""
+    
+    with open('security_report.html', 'w') as f:
+        f.write(html)
+    print("[+] Report generated: security_report.html")
+
+if __name__ == "__main__":
+    create_report()
 ```
 
 ---
@@ -128,8 +158,18 @@ Bash script to automate the attack process:
 
 ```bash
 #!/bin/bash
-# Performs network reconnaissance
-# Runs multiple Nmap scan types
+echo "===================================="
+echo "   NETWORK RECONNAISSANCE ATTACK"
+echo "   Target: Ubuntu 10.0.2.15"
+echo "===================================="
+echo ""
+echo "[*] Starting SYN scan..."
+nmap -sS 10.0.2.15
+echo ""
+echo "[*] Starting service version scan..."
+nmap -sV -p 22,80,443 10.0.2.15
+echo ""
+echo "[+] Attack complete!"
 ```
 
 ---
@@ -184,21 +224,21 @@ python3 generate_report.py
 - **Detection Success Rate:** Successfully detected port scanning activity
 
 **Security Recommendations I Made:**
-- Block suspicious IPs temporarily
-- Enable rate limiting on firewall
-- Implement **fail2ban** for SSH protection
-- Review and update firewall rules regularly
-- Deploy IDS/IPS system for real-time monitoring
+- Block suspicious IPs temporarily  
+- Enable rate limiting on firewall  
+- Implement **fail2ban** for SSH protection  
+- Review and update firewall rules regularly  
+- Deploy IDS/IPS system for real-time monitoring  
 
 ---
 
 ## 🎓 What I Learned
 Through this project, I learned:
-- How attackers gather information about target systems
-- The importance of network monitoring and logging
-- How to analyze packet-level data to identify attacks
-- How to write custom security tools in Python
-- The value of automated reporting for security incidents
+- How attackers gather information about target systems  
+- The importance of network monitoring and logging  
+- How to analyze packet-level data to identify attacks  
+- How to write custom security tools in Python  
+- The value of automated reporting for security incidents  
 
 ---
 
@@ -212,8 +252,3 @@ Feel free to reach out if you have questions about this project or want to discu
 
 ## ⚠️ Disclaimer
 This project is for educational purposes only. Never perform security testing on systems you don't own or without explicit permission.
-
-
-
-
-
