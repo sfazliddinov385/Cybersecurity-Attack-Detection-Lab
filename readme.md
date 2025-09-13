@@ -99,9 +99,40 @@ I created a Python script that automatically generates professional HTML reports
 ![Final Report](screenshots/Capture18.PNG)
 *Professional HTML security report showing the attack summary and recommendations*
 
-# 💻 Code Files
+## 💻 Code Files
 
-## 2. Report Generator (`generate_report.py`)
+### 1. Detection Script (`detect_scan.py`)
+This script monitors network connections and alerts when it detects a port scan:
+
+```python
+#!/usr/bin/env python3
+import subprocess
+import time
+from datetime import datetime
+
+print("[*] Starting Port Scan Detection...")
+print("[*] Monitoring on Ubuntu 10.0.2.15")
+print("="*50)
+
+while True:
+    # Check network connections
+    result = subprocess.run(['netstat', '-tn'], capture_output=True, text=True)
+
+    # Count connections from Kali
+    connections = result.stdout.count('10.0.2.3')
+
+    if connections > 10:
+        print(f"[!] ALERT: Possible scan from 10.0.2.3")
+        print(f"    Time: {datetime.now()}")
+        print(f"    Connections: {connections}")
+        print("="*50)
+
+    time.sleep(3)
+```
+
+---
+
+### 2. Report Generator (`generate_report.py`)
 This script creates professional HTML reports:
 
 ```python
@@ -110,7 +141,7 @@ import datetime
 
 def create_report():
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    
+
     html = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -126,13 +157,13 @@ def create_report():
     <h1>Security Assessment Report</h1>
     <p>Target: Ubuntu 10.0.2.15</p>
     <p>Generated: {timestamp}</p>
-    
+
     <div class="finding critical">
         <h3>Port Scanning Detected</h3>
         <p>Multiple connection attempts from 10.0.2.3</p>
         <p>Severity: High</p>
     </div>
-    
+
     <h2>Recommendations</h2>
     <ol>
         <li>Block suspicious IPs</li>
@@ -142,7 +173,7 @@ def create_report():
     </ol>
 </body>
 </html>"""
-    
+
     with open('security_report.html', 'w') as f:
         f.write(html)
     print("[+] Report generated: security_report.html")
@@ -153,7 +184,7 @@ if __name__ == "__main__":
 
 ---
 
-## 3. Attack Script (`attack_scan.sh`)
+### 3. Attack Script (`attack_scan.sh`)
 Bash script to automate the attack process:
 
 ```bash
@@ -218,10 +249,10 @@ python3 generate_report.py
 ## 📊 Results and Findings
 
 **What I Discovered:**
-- **Open Ports Found:** SSH (22), HTTP (80), HTTPS (443)
-- **Attack Type Detected:** TCP SYN Scan
-- **Total Packets Captured:** 2000+
-- **Detection Success Rate:** Successfully detected port scanning activity
+- **Open Ports Found:** SSH (22), HTTP (80), HTTPS (443)  
+- **Attack Type Detected:** TCP SYN Scan  
+- **Total Packets Captured:** 2000+  
+- **Detection Success Rate:** Successfully detected port scanning activity  
 
 **Security Recommendations I Made:**
 - Block suspicious IPs temporarily  
@@ -233,7 +264,6 @@ python3 generate_report.py
 ---
 
 ## 🎓 What I Learned
-Through this project, I learned:
 - How attackers gather information about target systems  
 - The importance of network monitoring and logging  
 - How to analyze packet-level data to identify attacks  
