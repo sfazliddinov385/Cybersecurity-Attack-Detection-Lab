@@ -107,76 +107,110 @@ This script monitors network connections and alerts when it detects a port scan:
 #!/usr/bin/env python3
 # Monitors network for suspicious scanning activity
 # Alerts when multiple connections detected from same IP
-2. Report Generator (generate_report.py)
+
+
+
+## 2. Report Generator (`generate_report.py`)
 This script creates professional HTML reports:
-python#!/usr/bin/env python3
+
+```python
+#!/usr/bin/env python3
 # Generates HTML security assessment reports
 # Includes findings, severity levels, and recommendations
-3. Attack Script (attack_scan.sh)
+```
+
+---
+
+## 3. Attack Script (`attack_scan.sh`)
 Bash script to automate the attack process:
-bash#!/bin/bash
+
+```bash
+#!/bin/bash
 # Performs network reconnaissance
 # Runs multiple Nmap scan types
-🚀 How to Run This Project
-Requirements
+```
 
-VirtualBox installed on your computer
-Kali Linux VM (attacker)
-Ubuntu VM (target)
-Both VMs on the same NAT Network
+---
 
-Setup Instructions
+## 🚀 How to Run This Project
 
-Configure Network: Set both VMs to use NAT Network in VirtualBox
-Install Tools on Ubuntu:
+### Requirements
+- VirtualBox installed on your computer  
+- Kali Linux VM (attacker)  
+- Ubuntu VM (target)  
+- Both VMs on the same **NAT Network**
 
-bashsudo apt update
+### Setup Instructions
+
+**Configure Network:** Set both VMs to use **NAT Network** in VirtualBox.
+
+**Install Tools on Ubuntu:**
+```bash
+sudo apt update
 sudo apt install ufw wireshark python3
+```
 
-Configure Firewall:
-
-bashsudo ufw enable
+**Configure Firewall:**
+```bash
+sudo ufw enable
 sudo ufw allow from 10.0.2.3
+```
 
-Run Detection Script (on Ubuntu):
+**Run Detection Script (on Ubuntu):**
+```bash
+sudo python3 detect_scan.py
+```
 
-bashsudo python3 detect_scan.py
+**Launch Attack (from Kali):**
+```bash
+./attack_scan.sh
+```
 
-Launch Attack (from Kali):
+**Generate Report (on Ubuntu):**
+```bash
+python3 generate_report.py
+```
 
-bash./attack_scan.sh
+---
 
-Generate Report (on Ubuntu):
+## 📊 Results and Findings
 
-bashpython3 generate_report.py
-📊 Results and Findings
-What I Discovered:
+**What I Discovered:**
+- **Open Ports Found:** SSH (22), HTTP (80), HTTPS (443)
+- **Attack Type Detected:** TCP SYN Scan
+- **Total Packets Captured:** 2000+
+- **Detection Success Rate:** Successfully detected port scanning activity
 
-Open Ports Found: SSH (22), HTTP (80), HTTPS (443)
-Attack Type Detected: TCP SYN Scan
-Total Packets Captured: 2000+
-Detection Success Rate: Successfully detected port scanning activity
+**Security Recommendations I Made:**
+- Block suspicious IPs temporarily
+- Enable rate limiting on firewall
+- Implement **fail2ban** for SSH protection
+- Review and update firewall rules regularly
+- Deploy IDS/IPS system for real-time monitoring
 
-Security Recommendations I Made:
+---
 
-Block suspicious IPs temporarily
-Enable rate limiting on firewall
-Implement fail2ban for SSH protection
-Review and update firewall rules regularly
-Deploy IDS/IPS system for real-time monitoring
-
-🎓 What I Learned
+## 🎓 What I Learned
 Through this project, I learned:
+- How attackers gather information about target systems
+- The importance of network monitoring and logging
+- How to analyze packet-level data to identify attacks
+- How to write custom security tools in Python
+- The value of automated reporting for security incidents
 
-How attackers gather information about target systems
-The importance of network monitoring and logging
-How to analyze packet-level data to identify attacks
-How to write custom security tools in Python
-The value of automated reporting for security incidents
+---
 
-📝 License
+## 📝 License
 This project is for educational purposes only. Please use responsibly and only on systems you own or have permission to test.
-🤝 Contact
+
+## 🤝 Contact
 Feel free to reach out if you have questions about this project or want to discuss cybersecurity!
 
-⚠️ Disclaimer: This project is for educational purposes only. Never perform security testing on systems you don't own or without explicit permission.
+---
+
+## ⚠️ Disclaimer
+This project is for educational purposes only. Never perform security testing on systems you don't own or without explicit permission.
+
+
+
+
