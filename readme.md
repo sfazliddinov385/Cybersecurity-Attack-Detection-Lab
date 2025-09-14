@@ -1,16 +1,10 @@
-# 🔒 Cybersecurity Attack Detection Lab
+# Cybersecurity Attack Detection Lab
 
 ## 📋 Project Overview
 I built this cybersecurity lab to learn how hackers attack networks and how to defend against them. I used two virtual machines - one as an attacker (Kali Linux) and one as a target (Ubuntu). Then I created Python scripts to detect attacks in real-time and generate professional security reports.
 
-## 🎯 What I Wanted to Learn
-- How network attacks work in real life
-- How to detect suspicious activity on a network
-- How to analyze network traffic
-- How to write security tools in Python
-- How to create professional security reports
 
-## 🛠️ Technologies I Used
+## Technologies I Used
 - **Kali Linux** - For attacking
 - **Ubuntu Linux** - As the target system
 - **Python** - For writing detection scripts
@@ -99,7 +93,7 @@ I created a Python script that automatically generates professional HTML reports
 ![Final Report](screenshots/Capture18.PNG)
 *Professional HTML security report showing the attack summary and recommendations*
 
-## 💻 Code Files
+## Code Files
 
 ### 1. Detection Script (`detect_scan.py`)
 This script monitors network connections and alerts when it detects a port scan:
@@ -191,7 +185,7 @@ def create_report():
         </div>
         
         <div class="finding info">
-            <h3>🛡️ Recommendations</h3>
+            <h3> Recommendations</h3>
             <ol>
                 <li>Block IP 10.0.2.3 temporarily</li>
                 <li>Enable rate limiting on firewall</li>
@@ -242,7 +236,7 @@ echo "[+] Attack complete!"
 
 ---
 
-## 🚀 How to Run This Project
+##  How to Run This Project
 
 ### Requirements
 - VirtualBox installed on your computer  
@@ -283,7 +277,7 @@ python3 generate_report.py
 
 ---
 
-## 📊 Results and Findings
+##  Results and Findings
 
 **What I Discovered:**
 - **Open Ports Found:** SSH (22), HTTP (80), HTTPS (443)  
@@ -300,7 +294,7 @@ python3 generate_report.py
 
 ---
 
-## 🎓 What I Learned
+## What I Learned
 - How attackers gather information about target systems  
 - The importance of network monitoring and logging  
 - How to analyze packet-level data to identify attacks  
@@ -319,4 +313,5 @@ Feel free to reach out if you have questions about this project or want to discu
 
 ## ⚠️ Disclaimer
 This project is for educational purposes only. Never perform security testing on systems you don't own or without explicit permission.
+
 
